@@ -23,16 +23,18 @@ def edit(data):
 		septdata1 = int(wrap(datanum1,4))
 
 		for i in septdata1:
-			if septdata1[i] > 1250:
-				septdata1[i] = 1250
-			elif 255 < septdata1[i] < 1000:
-				septdata1[i] = 255
-			if septdata1[i] > 1000:
-				septdata1[i] = septdata[i] - 1000
-			elif septdata1[i] < 1000:
-				septdata1[i] = -septdata[i]
-
+			if septdata[i] > 1000:
+				if septdata[i] > 1255:
+					septdata[i] = 255
+				septdata[i] = septdata[i] - 1000
+				
+			elif septdata[i] < 1000:
+				if 255 < septdata[i] < 1000:
+					septdata[i] = -255
+				septdata[i] = -septdata[i]
+			
 			lastdata1[i] = str(septdata1[i])
+				
 
 	return lastdata1
 
